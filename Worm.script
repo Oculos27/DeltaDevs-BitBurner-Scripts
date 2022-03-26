@@ -1,0 +1,122 @@
+delta = "\
+\n\
+                                . \n\
+                               (((\n\
+                              (((((\n\
+                              ((((((&\n\
+                             ((& ((((((\n\
+                            ((&*   ((((&\n\
+                            ((&     (((((&\n\
+                           ((# O    O  ((((&\n\
+                           ((            ((((&\n\
+                          ((&  \\____/    ((((%\n\
+                         ((&               ((((&\n\
+                         (#&      (((((((((((%&%@@@@@\n\
+                        ((((((%&%           @%////////@@\n\
+                      @ @//@@@&     @@@@@///////////////@\n\
+                     @@//////////////////////////////////@\n\
+                      @/////////////////////////##@///////@\n\
+                     @///////////////////////////##@///////@\n\
+                     @////////////////////////////##@//////%@\n\
+                     @///////@/////////////////////###///////@\n\
+                     @////////@////////////////////(#@///////@\n\
+                     @////////@/////////////////////##@//////(@\n\
+                     /////////@//////////////////////#@//////(@\n\
+                     //////////@/////////////////////##@/////#@\n\
+                      @/////////@/////////////////////##@/////@\n\
+                       @////////@@/////////////////////#@/////@\n\
+                        @/////////@///////////////////##@%/(@@\n\
+                        %@////////((/////////////////##@@####@\n\
+                         (@///////@@////////(@@%((((((((&##%@@@\n\
+                             @@@@##@@&(((((((((((((((((((@&####\n\
+---------------------------------------------------------------------------------------\n\
+                          DeltaDev's Auto-Growing Worm Virus\n\
+                                           V1";
+tprint(delta);
+
+var host = getHostname();
+
+var servers = scan(host);
+  /*[
+    "n00dles", "nectar-net", "silver-helix", "the-hub", "computek", "summit-uni", "rho-construction", "aerocorp", "omnia",
+     "defcomm", "unitalife", "zeus-med", "infocomm", "zb-def", "", "I.I.I.I", "netlink", "rothman-uni", "lexo-corp", "global-pharm",
+    "crush-fitness", "catalyst", "alpha-ent", "galactic-cyber", "deltaone", "icarus", "taiyang-digital", "univ-energy", "solaris",
+     "nova-med", "snap-fitness", "millenium-fitness", "foodnstuff", "zer0", "phantasy", "johnson-ortho", "zb-institute", "omega-net", "max-hardware", "CSEC",
+    "neo-net", "avmnite-02h", "syscore", "aevum-police", "sigma-cosmetics", "joesguns", "hong-fang-tea", "harakiri-sushi", "iron-gym"
+  ]; //end*/
+
+var portPrgms = ["BruteSSH.exe", "FTPCrack.exe", "relaySMTP.exe", "HTTPWorm.exe", "SQLInject.exe"]
+
+var ram = 0;
+var cost = 0;
+var threads = 0;
+
+print("Weakening, Growing, and Hacking available servers as needed.");
+tprint("Weakening, Growing, and Hacking available servers as needed.");
+
+while (true) {
+  for (i = 0; i < servers.length; i++) {
+    //if (!fileExists("Worm.script")) {
+      scp("Worm.script", servers[i]);
+    //}
+    ram = getServerRam(servers[i]);
+    cost = getScriptRam("Worm.script");
+    threads = Math.floor((ram[0]) / cost);
+
+    tprint("ram: " + ram + "\n" + "ram[0]:" + ram[0] + "  ram[1]: " + ram[1] + "\ncost: " + cost + "  threads: " + threads);
+
+    if (threads > 0) {
+      if (!scriptRunning("Worm.script", servers[i])) {
+        exec("Worm.script", servers[i], threads);
+        tprint("Running Worm on " + servers[i]);
+      }
+    }
+
+    var moneyThresh = getServerMaxMoney(servers[i]) * 0.8;
+    var securityThresh = getServerSecurityLevel(servers[i]) / 2;
+
+    if (securityThresh < getServerMinSecurityLevel(servers[i])) {
+      securityThresh = getServerMinSecurityLevel(servers[i]);
+    }
+
+    var pgrmCount = 0;
+    if (fileExists(portPrgms[0])) {
+      brutessh(servers[i]);
+      tprint("brutessh " + servers[i])
+    }
+
+    if (fileExists(portPrgms[1])) {
+      ftpcrack(servers[i]);
+      tprint("ftpcrack " + servers[i])
+    }
+
+    if (fileExists(portPrgms[2])) {
+      relaysmtp(servers[i]);
+      tprint("relaysmtp " + servers[i])
+    }
+
+    if (fileExists(portPrgms[3])) {
+      httpworm(servers[i]);
+      tprint("httpworm " + servers[i])
+    }
+
+    if (fileExists(portPrgms[4])) {
+      sqlinject(servers[i]);
+      tprint("sqlinject " + servers[i])
+    }
+
+    if (getHackingLevel() >= getServerRequiredHackingLevel(servers[i])) {
+      nuke(servers[i]);
+      tprint("Server Nuked: " + nuke(servers[i]));
+
+      if (getServerSecurityLevel(servers[i]) > securityThresh) {
+        tprint(servers[i] + " minimum security level: " + getServerMinSecurityLevel(servers[i]));
+        weaken(servers[i]);
+      } else if (getServerMoneyAvailable(servers[i]) < moneyThresh) {
+        grow(servers[i]);
+      } else {
+        hack(servers[i]);
+      }
+    }
+  }
+}
