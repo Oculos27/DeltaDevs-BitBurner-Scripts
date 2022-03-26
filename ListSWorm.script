@@ -37,7 +37,7 @@ tprint(delta);
 
 var host = getHostname();
 
-var servers = scan(host);
+var servers = 
   [
     "n00dles", "nectar-net", "silver-helix", "the-hub", "computek", "summit-uni", "rho-construction", "aerocorp", "omnia",
      "defcomm", "unitalife", "zeus-med", "infocomm", "zb-def", "", "I.I.I.I", "netlink", "rothman-uni", "lexo-corp", "global-pharm",
