@@ -37,13 +37,13 @@ tprint(delta);
 var host = getHostname();
 
 var servers = scan(host);
-  /*[
+  [
     "n00dles", "nectar-net", "silver-helix", "the-hub", "computek", "summit-uni", "rho-construction", "aerocorp", "omnia",
      "defcomm", "unitalife", "zeus-med", "infocomm", "zb-def", "", "I.I.I.I", "netlink", "rothman-uni", "lexo-corp", "global-pharm",
     "crush-fitness", "catalyst", "alpha-ent", "galactic-cyber", "deltaone", "icarus", "taiyang-digital", "univ-energy", "solaris",
      "nova-med", "snap-fitness", "millenium-fitness", "foodnstuff", "zer0", "phantasy", "johnson-ortho", "zb-institute", "omega-net", "max-hardware", "CSEC",
     "neo-net", "avmnite-02h", "syscore", "aevum-police", "sigma-cosmetics", "joesguns", "hong-fang-tea", "harakiri-sushi", "iron-gym"
-  ]; //end*/
+  ]; //end
 
 var portPrgms = ["BruteSSH.exe", "FTPCrack.exe", "relaySMTP.exe", "HTTPWorm.exe", "SQLInject.exe"]
 
